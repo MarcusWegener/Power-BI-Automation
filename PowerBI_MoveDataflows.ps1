@@ -134,7 +134,7 @@ function _postDataflowDefinition([string] $GroupID, [string]$DataflowDefinition,
         'Content-Type'  = "multipart/form-data; boundary=--$boundary"
     }
     
-    $postFlow = Invoke-RestMethod -Uri $url -ContentType 'multipart/form-data' -Method POST -Headers $headers -Body $body;
+    $postFlow = Invoke-RestMethod -Uri $url -ContentType 'multipart/form-data' -Method POST -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($body));
 
     return $postFlow;
 }
